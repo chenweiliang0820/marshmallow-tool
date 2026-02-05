@@ -3,8 +3,9 @@ import type { ToolManifest } from "./types";
 import { tool as helloTool } from "@/tools/hello/tool";
 import { tool as jsonTool } from "@/tools/json-format/tool";
 import { tool as restrictedDemoTool } from "@/tools/restricted-demo/tool";
+import { tool as cuteStyleTool } from "@/tools/cute-style/tool";
 
-const ALL_TOOLS = [helloTool, jsonTool, restrictedDemoTool] satisfies ToolManifest[];
+const ALL_TOOLS = [helloTool, jsonTool, restrictedDemoTool, cuteStyleTool] satisfies ToolManifest[];
 
 export function getAllTools(): ToolManifest[] {
   return [...ALL_TOOLS].sort((a, b) => a.name.localeCompare(b.name));
@@ -29,6 +30,9 @@ export async function loadToolPageComponent(slug: string) {
     case "restricted-demo":
       const { default: RestrictedDemoPage } = await import("@/tools/restricted-demo/page");
       return RestrictedDemoPage;
+    case "cute-style":
+      const { default: CuteStylePage } = await import("@/tools/cute-style/page");
+      return CuteStylePage;
     default:
       return null;
   }
