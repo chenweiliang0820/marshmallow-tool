@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[context.production.environment]
+  # 若要啟用 Supabase Auth，請在 Netlify 設定以下環境變數：
+  # NEXT_PUBLIC_SUPABASE_URL = "your_supabase_project_url"
+  # NEXT_PUBLIC_SUPABASE_ANON_KEY = "your_supabase_anon_key"
